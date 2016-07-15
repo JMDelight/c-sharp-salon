@@ -2,10 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>@Model.GetName()</title>
+    <title>@Model["stylist"].GetName()</title>
   </head>
   <body>
-    <a href="/clients/new">Add a new client to @Model.GetName()</a>
-    <a href="/stylists/edit/@Model.GetId()">Edit @Model.GetName()</a>
+    @if(Model["clients"].Count == 0)
+    {
+      <p>No clients have been registered with @Model["stylist"].GetName() yet.</p>
+    }
+      <ul>
+      @foreach(var stylist in Model["clients"])
+      {
+        <li><a href="/stylists/@stylist.GetId()">@stylist.GetName()</a></li>
+      }
+    <a href='/clients/new'>Add a new client to @Model["stylist"].GetName()</a>
+    <a href='/stylists/edit/@Model["stylist"].GetId()'>Edit @Model["stylist"].GetName()</a>
   </body>
 </html>
