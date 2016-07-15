@@ -15,6 +15,17 @@ namespace HairSalon
         List<Stylist> allStylists = Stylist.GetAll();
         return View["stylists.cshtml", allStylists];
       };
+
+      Get["/stylists/new"] = _ => View["stylists_form.cshtml"];
+
+      Post["/stylist/success"] = _ => {
+        Stylist newStylist = new Stylist(Request.Form["stylist-name"]);
+        newStylist.Save();
+        List<Stylist> allStylists = Stylist.GetAll();
+        return View["stylists.cshtml", allStylists];
+      };
+
+
     }
   }
 }
