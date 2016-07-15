@@ -15,6 +15,19 @@ namespace HairSalon
       _name = name;
       _id = id;
     }
+
+    public override bool Equals(System.Object otherStylist)
+    {
+      if(!(otherStylist is Stylist)) return false;
+      else
+      {
+        Stylist newStylist = (Stylist) otherStylist;
+        bool nameEquality = this.GetName() == newStylist.GetName();
+        bool idEquality = this.GetId() == newStylist.GetId();
+        return(nameEquality && idEquality);
+      }
+    }
+
     public int GetId()
     {
         return _id;
