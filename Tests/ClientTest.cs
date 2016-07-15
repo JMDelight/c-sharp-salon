@@ -63,6 +63,24 @@ namespace HairSalon
       Assert.Equal(testClient, foundClient);
     }
 
+    [Fact]
+    public void Test_Delete_DeletesASingleClientById()
+    {
+      //Arrange
+      Client firstClient = new Client("Bob", 1);
+      Client secondClient = new Client("Linda", 1);
+      firstClient.Save();
+      secondClient.Save();
+      List<Client> expectedResult = new List<Client> {firstClient};
+
+      //Act
+      secondClient.Delete();
+      List<Client> result = Client.GetAll();
+
+      //Assert
+      Assert.Equal(expectedResult, result);
+    }
+
 
     public void Dispose()
     {
