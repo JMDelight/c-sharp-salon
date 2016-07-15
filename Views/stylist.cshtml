@@ -8,6 +8,11 @@
     @if(Model["clients"].Count == 0)
     {
       <p>No clients have been registered with @Model["stylist"].GetName() yet.</p>
+
+      <form action='/stylist/delete/@Model["stylist"].GetId()' method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <button class="btn btn-warning" type="submit">Delete this stylist.</button>
+      </form>
     }
       <ul>
       @foreach(var client in Model["clients"])
