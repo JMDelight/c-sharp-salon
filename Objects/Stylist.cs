@@ -81,7 +81,6 @@ namespace HairSalon
       nameParameter.Value = this.GetName();
 
       cmd.Parameters.Add(nameParameter);
-
       rdr = cmd.ExecuteReader();
 
       while(rdr.Read())
@@ -112,9 +111,7 @@ namespace HairSalon
     stylistIdParameter.Value = this.GetId().ToString();
 
     cmd.Parameters.Add(stylistIdParameter);
-
     rdr = cmd.ExecuteReader();
-
     while(rdr.Read())
     {
       int clientId = rdr.GetInt32(0);
@@ -143,7 +140,6 @@ namespace HairSalon
 
       SqlCommand cmd = new SqlCommand("SELECT * FROM stylists;", conn);
       rdr = cmd.ExecuteReader();
-
       while(rdr.Read())
       {
         int stylistId = rdr.GetInt32(0);
@@ -175,11 +171,11 @@ namespace HairSalon
       stylistIdParameter.ParameterName = "@stylistId";
       stylistIdParameter.Value = searchId.ToString();
 
-      cmd.Parameters.Add(stylistIdParameter);
-
       int foundStylistId = 0;
       string foundStylistName = null;
       rdr = cmd.ExecuteReader();
+
+      cmd.Parameters.Add(stylistIdParameter);
 
       while(rdr.Read())
       {

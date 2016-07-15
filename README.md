@@ -21,7 +21,14 @@ _This is a C# web application that is designed to allow a user to create and man
   * GO
   * CREATE TABLE stylists (id INT IDENTITY(1,1), stylist_name VARCHAR(255));
   * CREATE TABLE clients (id INT IDENTITY(1,1), client_name VARCHAR(255), stylist_id INT);
-  * GO_
+  * GO
+  * CREATE DATABASE hair_salon_test;
+  * GO
+  * USE hair_salon;
+  * GO
+  * CREATE TABLE stylists (id INT IDENTITY(1,1), stylist_name VARCHAR(255));
+  * CREATE TABLE clients (id INT IDENTITY(1,1), client_name VARCHAR(255), stylist_id INT);
+  * GO
 * _Run the command dnx kestrel_
 * _using a web browser, navigate to http://localhost:5004_
 

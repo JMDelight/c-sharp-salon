@@ -99,8 +99,6 @@ namespace HairSalon
       Assert.Equal(3 , resultClient.GetStylistId());
     }
 
-
-
     public void Dispose()
     {
       Client.DeleteAll();

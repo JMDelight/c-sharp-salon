@@ -32,7 +32,6 @@ namespace HairSalon
     {
       return null;
     }
-
     public bool AutoIncludeModelNamespace
     {
       get { return false; }
