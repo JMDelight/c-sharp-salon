@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>@Model["client"].GetName()</title>
+  </head>
+  <body>
+    <h3>Client: @Model["client"].GetName()</h3>
+    <h4>Stylist: @Model["stylist"].GetName()</h4>
+    <a href='/client/edit/@Model["client"].GetId()'>Edit @Model["client"].GetName()</a>
+    <a href="/">Return home</a>
+  </body>
+</html>

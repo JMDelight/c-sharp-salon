@@ -12,9 +12,10 @@
       <ul>
       @foreach(var client in Model["clients"])
       {
-        <li><a href="/clients/@client.GetId()">@client.GetName()</a></li>
+        <li><a href="/client/@client.GetId()">@client.GetName()</a></li>
       }
-    <a href='/clients/new'>Add a new client to @Model["stylist"].GetName()</a>
-    <a href='/stylists/edit/@Model["stylist"].GetId()'>Edit @Model["stylist"].GetName()</a>
+    <a href='/clients/new'>Add a new client</a>
+    <a href='/stylist/edit/@Model["stylist"].GetId()'>Edit @Model["stylist"].GetName()</a>
+    <a href="/">Return home</a>
   </body>
 </html>
