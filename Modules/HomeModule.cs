@@ -11,7 +11,19 @@ namespace HairSalon
     {
       Get["/"] = _ => View["index.cshtml"];
 
-      Get["/clients/new"] = _ => View["clients_form.cshtml"];
+
+
+      Get["/clients/new"] = _ => {
+        List<Stylist> allStylists = Stylist.GetAll();
+        return View["clients_form.cshtml", allStylists];
+      };
+
+      Post["/client/success"] = _ => {
+        Client newClient = new Client(Request.Form["client-name"], Request.Form["stylist-id"]);
+        newClient.Save();
+        List<Client> allClients = Client.GetAll();
+        return View["clients.cshtml", allClients];
+      };
 
       Get["/stylists"] = _ => {
         List<Stylist> allStylists = Stylist.GetAll();
