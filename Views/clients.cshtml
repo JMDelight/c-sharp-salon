@@ -7,21 +7,35 @@
     <title>All Clients</title>
   </head>
   <body>
-    @if(@Model.Count == 0)
+    <div class="container">
+    @if(@Model["clients"].Count == 0)
     {
       <p>No Clients have been registered yet.</p>
     }
     else
     {
       <ul>
-      @foreach(var client in Model)
+      @foreach(var client in Model["clients"])
       {
         <li><a href="/client/@client.GetId()">@client.GetName()</a></li>
       }
     </ul>
     }
-    <a href="/clients/new">Add a new client.</a>
-    <a href="/">Return Home</a>
-    <a href="/stylists">View all Stylists</a>
+    <br>
+      <h4>Add a new Client</h4>
+      <form class="form-group" action="/clients" method="post">
+        <label for="client-name">Enter Client's Name:</label>
+        <input type="text" name="client-name" required>
+        <select name="stylist-id">
+          @foreach (var stylist in Model["stylists"])
+          {
+            <option value="@stylist.GetId()">@stylist.GetName()</option>
+          }
+        </select>
+        <button class="btn" type="submit" name="button">Submit</button>
+      </form>
+      <a href="/">Return Home</a> |
+      <a href="/stylists">View all Stylists</a>
+    </div>
   </body>
 </html>

@@ -6,16 +6,18 @@
     <title>Add a new Stylist</title>
   </head>
   <body>
-    <h2>Edit  @Model.GetName()</h2>
-    <form class="form-group" action="/stylist" method="post">
-      <input type="hidden" name="_method" value="PATCH">
-      <label for="stylist-name">Enter Stylist Name:</label>
-      <input type="text" name="stylist-name" value="@Model.GetName()" required>
-      <input type="text" name="stylist-id" value="@Model.GetId()" hidden>
-      <button class="btn" type="submit" name="button">Submit</button>
-    </form>
-    <a href="/">Return Home</a>
-    <a href="/clients">View all Clients</a>
-    <a href="/stylists">View all Stylists</a>
+    <div class="container">
+      <h2>Edit  @Model.GetName()</h2>
+      <form class="form-group" action="/stylists" method="post">
+        <input type="hidden" name="_method" value="PATCH">
+        <label for="stylist-name">Enter Stylist Name:</label>
+        <input type="text" name="stylist-name" value="@Model.GetName()" required>
+        <input type="text" name="stylist-id" value="@Model.GetId()" hidden>
+        <button class="btn" type="submit" name="button">Submit</button>
+      </form>
+      <a href="/">Return Home</a> |
+      <a href="/clients">View all Clients</a> |
+      <a href="/stylists">View all Stylists</a>
+    </div>
   </body>
 </html>

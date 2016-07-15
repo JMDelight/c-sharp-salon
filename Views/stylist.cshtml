@@ -5,24 +5,39 @@
     <title>@Model["stylist"].GetName()</title>
   </head>
   <body>
-    @if(Model["clients"].Count == 0)
-    {
-      <p>No clients have been registered with @Model["stylist"].GetName() yet.</p>
-
-      <form action='/stylist/@Model["stylist"].GetId()' method="post">
-        <input type="hidden" name="_method" value="DELETE">
-        <button class="btn btn-warning" type="submit">Delete this stylist.</button>
-      </form>
-    }
-      <ul>
-      @foreach(var client in Model["clients"])
+    <div class="container">
+      @if(Model["clients"].Count == 0)
       {
-        <li><a href="/client/@client.GetId()">@client.GetName()</a></li>
+        <p>No clients have been registered with @Model["stylist"].GetName() yet.</p>
+
+        <form action='/stylist/@Model["stylist"].GetId()' method="post">
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="btn btn-warning" type="submit">Delete this stylist.</button>
+        </form>
       }
-    <a href='/clients/new'>Add a new client</a>
-    <a href='/stylist/edit/@Model["stylist"].GetId()'>Edit @Model["stylist"].GetName()</a>
-    <a href="/">Return Home</a>
-    <a href="/clients">View all Clients</a>
-    <a href="/stylists">View all Stylists</a>
+      <ul>
+        @foreach(var client in Model["clients"])
+        {
+          <li><a href="/client/@client.GetId()">@client.GetName()</a></li>
+        }
+      </ul>
+      <br>
+      <h4>Add a new client to @Model["stylist"].GetName()</h4>
+      <div class="container">
+        <form class="form-group" action="/clients" method="post">
+          <label for="client-name">Enter Client's Name:</label>
+          <input type="text" name="client-name"  required>
+          <select name="stylist-id">
+            <option value='@Model["stylist"].GetId()' selected>@Model["stylist"].GetName()</option>
+          </select>
+          <button class="btn" type="submit" name="button">Submit</button>
+        </form>
+      </div>
+      <br>
+      <a href='/stylist/edit/@Model["stylist"].GetId()'>Edit @Model["stylist"].GetName()</a> |
+      <a href="/">Return Home</a> |
+      <a href="/clients">View all Clients</a> |
+      <a href="/stylists">View all Stylists</a>
+    </div>
   </body>
 </html>
