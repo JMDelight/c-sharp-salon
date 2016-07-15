@@ -8,6 +8,14 @@
     <h3>Client: @Model["client"].GetName()</h3>
     <h4>Stylist: @Model["stylist"].GetName()</h4>
     <a href='/client/edit/@Model["client"].GetId()'>Edit @Model["client"].GetName()</a>
+
+    <br>
+    <br>
+    <form action='/client/delete/@Model["client"].GetId()' method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <button class="btn btn-warning" type="submit">Delete this client.</button>
+
+    </form>
     <a href="/">Return home</a>
   </body>
 </html>
