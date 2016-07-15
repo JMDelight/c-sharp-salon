@@ -13,7 +13,15 @@ _This is a C# web application that is designed to allow a user to create and man
 * _Download the repository_
 * _In the command line, navigate to the repository_
 * _Run the command dnu restore_
-* _Create databses from sql script files_
+* _Either: Create databses from sql script files_
+* _Or: In sqlcmd, run the following commands-_
+  * CREATE DATABASE hair_salon;
+  * GO
+  * USE hair_salon;
+  * GO
+  * CREATE TABLE stylists (id INT IDENTITY(1,1), stylist_name VARCHAR(255));
+  * CREATE TABLE clients (id INT IDENTITY(1,1), client_name VARCHAR(255), stylist_id INT);
+  * GO_
 * _Run the command dnx kestrel_
 * _using a web browser, navigate to http://localhost:5004_
 
@@ -24,7 +32,6 @@ _There are no known issues with this page_
 ## Support and contact details
 
 _If you have any questions or concerns, please email me at thefencingflutist@gmail.com_
-
 
 
 ## Technologies Used
