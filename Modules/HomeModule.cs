@@ -21,6 +21,15 @@ namespace HairSalon
         return View["clients_form.cshtml", allStylists];
       };
 
+      Get["/client/edit/{id}"] = parameters => {
+        Dictionary<string, object> model = new Dictionary<string, object>();
+        Client foundClient = Client.Find(parameters.id);
+        List<Stylist> allStylists = Stylist.GetAll();
+        model.Add("client", foundClient);
+        model.Add("stylists", allStylists);
+        return View["client_edit.cshtml", model];
+      };
+
       Get["/client/{id}"] = parameters => {
         Dictionary<string, object> model = new Dictionary<string, object>();
         Client foundClient = Client.Find(parameters.id);
@@ -33,6 +42,13 @@ namespace HairSalon
       Post["/client/success"] = _ => {
         Client newClient = new Client(Request.Form["client-name"], Request.Form["stylist-id"]);
         newClient.Save();
+        List<Client> allClients = Client.GetAll();
+        return View["clients.cshtml", allClients];
+      };
+
+      Patch["/client/success"] = _ => {
+        Client editedClient =Client.Find(Request.Form["client-id"]);
+        editedClient.Update(Request.Form["client-name"], Request.Form["stylist-id"]);
         List<Client> allClients = Client.GetAll();
         return View["clients.cshtml", allClients];
       };
@@ -69,7 +85,7 @@ namespace HairSalon
 
       Get["/stylist/edit/{id}"] = parameters => {
         Stylist foundStylist = Stylist.Find(parameters.id);
-        return View["stylists_edit.cshtml", foundStylist];
+        return View["stylist_edit.cshtml", foundStylist];
       };
 
 
