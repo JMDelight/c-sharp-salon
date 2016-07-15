@@ -6,7 +6,7 @@
     <title>Add a new Client</title>
   </head>
   <body>
-    <form class="form-group" action="/client/success" method="post">
+    <form class="form-group" action="/client" method="post">
       <label for="client-name">Enter Client's Name:</label>
       <input type="text" name="client-name" required>
       <select name="stylist-id">
@@ -17,5 +17,8 @@
       </select>
       <button class="btn" type="submit" name="button">Submit</button>
     </form>
+    <a href="/">Return Home</a>
+    <a href="/clients">View all Clients</a>
+    <a href="/stylists">View all Stylists</a>
   </body>
 </html>

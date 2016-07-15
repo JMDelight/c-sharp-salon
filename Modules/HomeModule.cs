@@ -21,7 +21,7 @@ namespace HairSalon
         return View["clients_form.cshtml", allStylists];
       };
 
-      Delete["/client/delete/{id}"] = parameters => {
+      Delete["/client/{id}"] = parameters => {
         Client clientToDelete = Client.Find(parameters.id);
         Stylist foundStylist = Stylist.Find(clientToDelete.GetStylistId());
         clientToDelete.Delete();
@@ -51,14 +51,14 @@ namespace HairSalon
         return View["client.cshtml", model];
       };
 
-      Post["/client/success"] = _ => {
+      Post["/client"] = _ => {
         Client newClient = new Client(Request.Form["client-name"], Request.Form["stylist-id"]);
         newClient.Save();
         List<Client> allClients = Client.GetAll();
         return View["clients.cshtml", allClients];
       };
 
-      Patch["/client/success"] = _ => {
+      Patch["/client"] = _ => {
         Client editedClient =Client.Find(Request.Form["client-id"]);
         editedClient.Update(Request.Form["client-name"], Request.Form["stylist-id"]);
         List<Client> allClients = Client.GetAll();
@@ -72,14 +72,14 @@ namespace HairSalon
 
       Get["/stylists/new"] = _ => View["stylists_form.cshtml"];
 
-      Post["/stylist/success"] = _ => {
+      Post["/stylist"] = _ => {
         Stylist newStylist = new Stylist(Request.Form["stylist-name"]);
         newStylist.Save();
         List<Stylist> allStylists = Stylist.GetAll();
         return View["stylists.cshtml", allStylists];
       };
 
-      Patch["/stylist/success"] = _ => {
+      Patch["/stylist"] = _ => {
         Stylist editedStylist = Stylist.Find(Request.Form["stylist-id"]);
         editedStylist.Update(Request.Form["stylist-name"]);
         List<Stylist> allStylists = Stylist.GetAll();
@@ -100,7 +100,7 @@ namespace HairSalon
         return View["stylist_edit.cshtml", foundStylist];
       };
 
-      Delete["/stylist/delete/{id}"] = parameters => {
+      Delete["/stylist/{id}"] = parameters => {
         Stylist stylistToDelete = Stylist.Find(parameters.id);
         stylistToDelete.Delete();
         List<Stylist> allStylists = Stylist.GetAll();

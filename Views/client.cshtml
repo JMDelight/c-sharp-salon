@@ -11,11 +11,12 @@
 
     <br>
     <br>
-    <form action='/client/delete/@Model["client"].GetId()' method="post">
+    <form action='/client/@Model["client"].GetId()' method="post">
       <input type="hidden" name="_method" value="DELETE">
       <button class="btn btn-warning" type="submit">Delete this client.</button>
-
     </form>
-    <a href="/">Return home</a>
+    <a href="/">Return Home</a>
+    <a href="/clients">View all Clients</a>
+    <a href="/stylists">View all Stylists</a>
   </body>
 </html>

@@ -9,7 +9,7 @@
     {
       <p>No clients have been registered with @Model["stylist"].GetName() yet.</p>
 
-      <form action='/stylist/delete/@Model["stylist"].GetId()' method="post">
+      <form action='/stylist/@Model["stylist"].GetId()' method="post">
         <input type="hidden" name="_method" value="DELETE">
         <button class="btn btn-warning" type="submit">Delete this stylist.</button>
       </form>
@@ -21,6 +21,8 @@
       }
     <a href='/clients/new'>Add a new client</a>
     <a href='/stylist/edit/@Model["stylist"].GetId()'>Edit @Model["stylist"].GetName()</a>
-    <a href="/">Return home</a>
+    <a href="/">Return Home</a>
+    <a href="/clients">View all Clients</a>
+    <a href="/stylists">View all Stylists</a>
   </body>
 </html>
