@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <title>Add a new Stylist</title>
+  </head>
+  <body>
+    <h2>Edit  @Model.GetName()</h2>
+    <form class="form-group" action="/stylist/success" method="post">
+      <input type="hidden" name="_method" value="PATCH">
+      <label for="stylist-name">Enter Stylist Name:</label>
+      <input type="text" name="stylist-name" value="@Model.GetName()" required>
+      <input type="text" name="stylist-id" value="@Model.GetId()" hidden>
+      <button class="btn" type="submit" name="button">Submit</button>
+    </form>
+  </body>
+</html>
