@@ -25,6 +25,11 @@ namespace HairSalon
         return View["stylists.cshtml", allStylists];
       };
 
+      Get["/stylists/{id}"] = parameters => {
+        Stylist foundStylist = Stylist.Find(parameters.id);
+        return View["stylist.cshtml", foundStylist];
+      };
+
 
     }
   }
