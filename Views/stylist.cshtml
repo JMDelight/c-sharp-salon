@@ -10,9 +10,9 @@
       <p>No clients have been registered with @Model["stylist"].GetName() yet.</p>
     }
       <ul>
-      @foreach(var stylist in Model["clients"])
+      @foreach(var client in Model["clients"])
       {
-        <li><a href="/stylists/@stylist.GetId()">@stylist.GetName()</a></li>
+        <li><a href="/clients/@client.GetId()">@client.GetName()</a></li>
       }
     <a href='/clients/new'>Add a new client to @Model["stylist"].GetName()</a>
     <a href='/stylists/edit/@Model["stylist"].GetId()'>Edit @Model["stylist"].GetName()</a>
