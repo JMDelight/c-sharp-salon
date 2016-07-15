@@ -18,6 +18,67 @@ namespace HairSalon
       _stylistId = stylistId;
     }
 
+    public override bool Equals(System.Object otherClient)
+    {
+      if(!(otherClient is Client)) return false;
+      else
+      {
+        Client newClient = (Client) otherClient;
+        bool nameEquality = this.GetName() == newClient.GetName();
+        bool idEquality = this.GetId() == newClient.GetId();
+        bool stylistEquality = this.GetStylistId() == newClient.GetStylistId();
+        return(nameEquality && idEquality && stylistEquality);
+      }
+    }
+
+    public int GetId()
+    {
+        return _id;
+    }
+    public string GetName()
+    {
+        return _name;
+    }
+    public int GetStylistId()
+    {
+      return _stylistId;
+    }
+
+    public void Save()
+    {
+      SqlConnection conn = DB.Connection();
+      SqlDataReader rdr;
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("INSERT INTO clients (client_name, stylist_id) OUTPUT INSERTED.id VALUES (@clientName, @stylistId);", conn);
+
+      SqlParameter nameParameter = new SqlParameter();
+      nameParameter.ParameterName = "@clientName";
+      nameParameter.Value = this.GetName();
+
+      SqlParameter stylistIdParameter = new SqlParameter();
+      stylistIdParameter.ParameterName = "@stylistId";
+      stylistIdParameter.Value = this.GetStylistId();
+
+      cmd.Parameters.Add(nameParameter);
+      cmd.Parameters.Add(stylistIdParameter);
+
+      rdr = cmd.ExecuteReader();
+
+      while(rdr.Read())
+      {
+        this._id = rdr.GetInt32(0);
+      }
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
+
     public static List<Client> GetAll()
     {
       List<Client> allClients = new List<Client>{};
