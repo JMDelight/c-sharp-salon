@@ -111,6 +111,7 @@ namespace HairSalon
     stylistIdParameter.Value = this.GetId().ToString();
 
     cmd.Parameters.Add(stylistIdParameter);
+
     rdr = cmd.ExecuteReader();
     while(rdr.Read())
     {
@@ -144,7 +145,6 @@ namespace HairSalon
       {
         int stylistId = rdr.GetInt32(0);
         string stylistName = rdr.GetString(1);
-
         Stylist newStylist = new Stylist(stylistName, stylistId);
         allStylists.Add(newStylist);
       }
@@ -171,12 +171,12 @@ namespace HairSalon
       stylistIdParameter.ParameterName = "@stylistId";
       stylistIdParameter.Value = searchId.ToString();
 
-      int foundStylistId = 0;
-      string foundStylistName = null;
-      rdr = cmd.ExecuteReader();
-
       cmd.Parameters.Add(stylistIdParameter);
 
+      rdr = cmd.ExecuteReader();
+
+      int foundStylistId = 0;
+      string foundStylistName = null;
       while(rdr.Read())
       {
         foundStylistId = rdr.GetInt32(0);

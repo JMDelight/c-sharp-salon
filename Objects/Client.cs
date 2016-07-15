@@ -154,12 +154,13 @@ namespace HairSalon
       clientIdParameter.ParameterName = "@clientId";
       clientIdParameter.Value = searchId.ToString();
 
+      cmd.Parameters.Add(clientIdParameter);
+
+      rdr = cmd.ExecuteReader();
+
       int foundClientId = 0;
       string foundClientName = null;
       int foundStylistId = 0;
-      rdr = cmd.ExecuteReader();
-
-      cmd.Parameters.Add(clientIdParameter);
       while(rdr.Read())
       {
         foundClientId = rdr.GetInt32(0);

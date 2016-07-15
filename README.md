@@ -13,7 +13,7 @@ _This is a C# web application that is designed to allow a user to create and man
 * _Download the repository_
 * _In the command line, navigate to the repository_
 * _Run the command dnu restore_
-* _Either: Create databses from sql script files_
+* _Either: Create databases for hair_salon and hair_salon\_test from sql script files_
 * _Or: In sqlcmd, run the following commands-_
   * CREATE DATABASE hair_salon;
   * GO

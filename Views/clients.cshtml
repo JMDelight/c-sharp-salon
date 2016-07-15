@@ -21,6 +21,8 @@
     </ul>
     }
     <br>
+    @if(@Model["clients"].Count != 0)
+    {
       <h4>Add a new Client</h4>
       <form class="form-group" action="/clients" method="post">
         <label for="client-name">Enter Client's Name:</label>
@@ -33,6 +35,7 @@
         </select>
         <button class="btn" type="submit" name="button">Submit</button>
       </form>
+    }
       <a href="/">Return Home</a> |
       <a href="/stylists">View all Stylists</a>
     </div>
